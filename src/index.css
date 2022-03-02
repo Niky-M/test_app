@@ -37,3 +37,19 @@ code {
 .done {
   text-decoration: line-through;
 }
+
+._form {
+  margin: 10px;
+  border: 20px;
+  border-color: black;
+}
+
+._input {
+  background-color: rgb(118, 233, 124);
+  
+}
+
+._button {
+  border-radius: 10%;
+  margin: 10px;
+}

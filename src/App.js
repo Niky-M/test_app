@@ -1,5 +1,7 @@
 import React from 'react'
 import ToDoList from './ToDo/ToDoList';
+import Context from './context/context';
+import AddToDo from './ToDo/AddToDo';
 
 function App()
 {
@@ -23,12 +25,26 @@ function App()
 
   }
 
+  function removeToDo(id)
+  {
+    setTodos(todos.filter(todo => todo.id != id))
+  }
+
   return (
-    <div className='wrapper'>
-      <h1>Reatc tuturial</h1>
-      <button className='button'>OK</button>
-      <ToDoList todos={todos} onToggle={toggleToDo} />
-    </div>
+    <Context.Provider value={{ removeToDo }}>
+      <div className='wrapper'>
+        <h1>Reatc tuturial</h1>
+        <AddToDo/>
+        {todos.length ? (
+          <ToDoList todos={todos} onToggle={toggleToDo} />
+        ) : (
+          <p>Нет задач</p>
+        )}
+
+
+        <button className='button'>Добавить задачу</button>
+      </div>
+    </Context.Provider>
   )
 }
 
